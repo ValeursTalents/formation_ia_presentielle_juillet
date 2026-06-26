@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation IA - Consultant Formateur | Valeurs & Talents</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Calibri, Arial, sans-serif;
+            line-height: 1.6;
+            color: #473c32;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #473c32 0%, #2a2520 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="200" cy="100" r="150" fill="%2394c11f" opacity="0.1"/><circle cx="1000" cy="400" r="200" fill="%23ee7601" opacity="0.1"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #94c11f;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .highlight {
+            color: #ee7601;
+            font-weight: bold;
+        }
+
+        .header-info {
+            margin-top: 30px;
+            font-size: 1.1em;
+        }
+
+        /* Section générale */
+        section {
+            padding: 60px 20px;
+        }
+
+        section:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #473c32;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #94c11f, #ee7601);
+            margin: 15px auto 0;
+        }
+
+        /* Description */
+        .description {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #473c32;
+        }
+
+        /* Programme - Accordéon */
+        .accordion {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 4px 15px rgba(148,193,31,0.2);
+        }
+
+        .accordion-header {
+            background: linear-gradient(135deg, #94c11f 0%, #7da919 100%);
+            color: white;
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #7da919 0%, #94c11f 100%);
+        }
+
+        .accordion-header .icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header .icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding: 0 25px;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+            padding: 25px;
+        }
+
+        .module-details {
+            color: #473c32;
+            line-height: 1.8;
+        }
+
+        .module-details ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .module-details li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+        }
+
+        .module-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #94c11f;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .module-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .tool-badge {
+            background: #f0f0f0;
+            color: #473c32;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .module-duration {
+            color: #ee7601;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* Vidéo */
+        .video-container {
+            max-width: 800px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-intro {
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #473c32;
+        }
+
+        /* Infos pratiques */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #94c11f;
+        }
+
+        .info-card h3 {
+            color: #473c32;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .info-card .icon-large {
+            font-size: 2.5em;
+            color: #ee7601;
+            margin-bottom: 15px;
+        }
+
+        .date-item {
+            background: #f8f8f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #94c11f;
+        }
+
+        .date-item strong {
+            color: #ee7601;
+        }
+
+        /* Carte */
+        .map-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Documents */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .doc-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 20px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #473c32;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .doc-button:hover {
+            border-color: #94c11f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(148,193,31,0.3);
+        }
+
+        .doc-button .icon {
+            font-size: 2em;
+            color: #ee7601;
+        }
+
+        .doc-name {
+            flex: 1;
+            margin: 0 15px;
+            text-align: left;
+        }
+
+        /* Footer */
+        footer {
+            background: #473c32;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-contact {
+            margin-bottom: 25px;
+        }
+
+        .footer-contact a {
+            color: #94c11f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-contact a:hover {
+            color: #ee7601;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #94c11f;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <img src="logo.png" alt="Valeurs & Talents" class="logo">
+            <h1>Parcours Certifiant IA</h1>
+            <p class="subtitle">Intégrer l'IA dans les missions du consultant formateur</p>
+            <p class="subtitle"><span class="highlight">Modalité présentielle</span> - Format 2+2+1</p>
+            <div class="header-info">
+                <p>📅 Juillet - Octobre 2026 | 📍 Paris (75)</p>
+                <p>🎓 Formation préparant à la certification RS7138</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Description -->
+    <section>
+        <div class="container">
+            <h2>Une formation pour transformer vos pratiques</h2>
+            <p class="description">
+                Formation certifiante visant à doter les formateurs des compétences nécessaires pour intégrer efficacement l'intelligence artificielle dans leurs missions. Une approche pragmatique pour moderniser vos pratiques pédagogiques et augmenter votre impact professionnel.
+            </p>
+        </div>
+    </section>
+
+    <!-- Programme -->
+    <section>
+        <div class="container">
+            <h2>Programme détaillé - 5 jours de formation</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1em; color: #473c32;">
+                Un parcours progressif sur 3 mois : 2×2 jours de formation espacés d'1 mois + 1 jour de REX et préparation à la certification
+            </p>
+            <div class="accordion">
+                <!-- Jour 1 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>🗓️ Jour 1 - L'IA dans le métier de formateur</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="module-details">
+                            <p style="font-weight: 600; color: #94c11f; margin-bottom: 15px;">Module 1 : Les fondamentaux autour de la maîtrise de l'IAG</p>
+                            <ul>
+                                <li>Panorama des IA génératives utiles en formation</li>
+                                <li>Création de comptes, personas, prompts, IA éthique</li>
+                                <li>Premiers cas d'usages pédagogiques</li>
+                            </ul>
+                            <div class="module-tools">
+                                <span class="tool-badge">ChatGPT</span>
+                                <span class="tool-badge">Gemini</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jour 2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>🗓️ Jour 2 - Concevoir et animer avec l'IA</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="module-details">
+                            <p style="font-weight: 600; color: #94c11f; margin-bottom: 15px;">Module 2 : Conception de parcours pédagogiques personnalisés</p>
+                            <ul>
+                                <li>Génération de déroulés, supports & habillage</li>
+                                <li>Travaux pratiques en binôme sur des cas réels</li>
+                            </ul>
+                            <div class="module-tools">
+                                <span class="tool-badge">ChatGPT</span>
+                                <span class="tool-badge">Gamma</span>
+                                <span class="tool-badge">Genspark</span>
+                            </div>
+                            
+                            <p style="font-weight: 600; color: #94c11f; margin: 25px 0 15px;">Module 4 : Animation et évaluation augmentées</p>
+                            <ul>
+                                <li>Création de quiz et cas pratiques avec IA</li>
+                                <li>Enquêtes qualité et exploitation des résultats IA</li>
+                                <li>Intégration dans l'animation présentielle ou distancielle</li>
+                            </ul>
+                            <div class="module-tools">
+                                <span class="tool-badge">ChatGPT</span>
+                                <span class="tool-badge">Quizizz</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jour 3 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>🗓️ Jour 3 - Créer du contenu multimédia impactant</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="module-details">
+                            <p style="font-weight: 600; color: #ee7601; margin-bottom: 15px;">Module 5 : Formation plus technique avec le blended learning</p>
+                            <ul>
+                                <li>Production de podcasts, vidéos, avatars animés</li>
+                                <li>Usage de Heygen, NotebookLM</li>
+                                <li>Développement de contenu e-learning</li>
+                            </ul>
+                            <div class="module-tools">
+                                <span class="tool-badge">NotebookLM</span>
+                                <span class="tool-badge">Heygen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jour 4 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>🗓️ Jour 4 - Automatiser pour gagner du temps</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="module-details">
+                            <p style="font-weight: 600; color: #ee7601; margin-bottom: 15px;">Module 3 : L'automatisation et les agents IA</p>
+                            <ul>
+                                <li>Introduction à Make, n8n et à l'automatisation</li>
+                                <li>Construction d'un chatbot ou robot SAV IA</li>
+                                <li>Automatisation de programmes de formation</li>
+                            </ul>
+                            <div class="module-tools">
+                                <span class="tool-badge">ChatGPT</span>
+                                <span class="tool-badge">Make</span>
+                                <span class="tool-badge">n8n</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jour 5 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>🗓️ Jour 5 - REX et passage à l'action (à J+30)</span>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="module-details">
+                            <p style="font-weight: 600; color: #473c32; margin-bottom: 15px;">Module 6 : Organiser sa veille</p>
+                            <ul>
+                                <li>Veille IA, influenceurs et automatisation de curation</li>
+                                <li>Automatisation de la veille</li>
+                                <li>Révisions</li>
+                            </ul>
+                            <div class="module-tools">
+                                <span class="tool-badge">ChatGPT</span>
+                                <span class="tool-badge">Gemini</span>
+                            </div>
+                            
+                            <p style="font-weight: 600; color: #473c32; margin: 25px 0 15px;">Consolidation des modules et passage à l'action</p>
+                            <ul>
+                                <li>Partage des retours d'usage par les participants</li>
+                                <li>Finalisation du dossier professionnel</li>
+                                <li>Coaching personnalisé autour de la soutenance orale</li>
+                                <li>Évaluation blanche et feedback final</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline visuelle -->
+            <div style="max-width: 900px; margin: 50px auto; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <h3 style="text-align: center; color: #473c32; margin-bottom: 30px;">📅 Calendrier de la formation</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+                    <div style="flex: 1; min-width: 150px; text-align: center; padding: 15px; background: #f8f8f8; border-radius: 8px; border-left: 4px solid #94c11f;">
+                        <strong style="color: #94c11f;">Jours 1-2</strong><br>
+                        <span style="font-size: 0.9em;">8-9 juillet 2026</span>
+                    </div>
+                    <div style="color: #94c11f; font-size: 1.5em;">→</div>
+                    <div style="flex: 1; min-width: 150px; text-align: center; padding: 15px; background: #f8f8f8; border-radius: 8px; border-left: 4px solid #ee7601;">
+                        <strong style="color: #ee7601;">Jours 3-4</strong><br>
+                        <span style="font-size: 0.9em;">26-27 août 2026</span>
+                    </div>
+                    <div style="color: #ee7601; font-size: 1.5em;">→</div>
+                    <div style="flex: 1; min-width: 150px; text-align: center; padding: 15px; background: #f8f8f8; border-radius: 8px; border-left: 4px solid #473c32;">
+                        <strong style="color: #473c32;">Jour 5</strong><br>
+                        <span style="font-size: 0.9em;">1er octobre 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vidéo -->
+    <section style="background: white;">
+        <div class="container">
+            <h2>Le mot du créateur du parcours</h2>
+            <p class="video-intro">Découvrez la vision de Mickaël Loeuille, créateur du parcours et père de la certification RS7138</p>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/UkHoCkLQIhA" 
+                            title="Présentation de la formation" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informations pratiques -->
+    <section>
+        <div class="container">
+            <h2>Informations pratiques</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="icon-large">📅</div>
+                    <h3>Dates de formation</h3>
+                    <div class="date-item">
+                        <strong>Jours 1 et 2</strong><br>
+                        8-9 juillet 2026
+                    </div>
+                    <div class="date-item">
+                        <strong>Jours 3 et 4</strong><br>
+                        26-27 août 2026
+                    </div>
+                    <div class="date-item">
+                        <strong>Jour 5 (REX)</strong><br>
+                        1er octobre 2026
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-large">🎯</div>
+                    <h3>Public cible</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">✓ Formateurs professionnels expérimentés</li>
+                        <li style="padding: 8px 0;">✓ Consultants en formation</li>
+                        <li style="padding: 8px 0;">✓ Responsables pédagogiques</li>
+                        <li style="padding: 8px 0;">✓ Concepteurs de formation</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon-large">💼</div>
+                    <h3>Format</h3>
+                    <p style="font-size: 1.1em; margin: 10px 0;">
+                        <strong>2×2 jours</strong> de formation intensive<br>
+                        espacés d'1 mois<br><br>
+                        <strong>+ 1 jour</strong> de REX<br>
+                        et préparation certification
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin: 50px 0 30px; font-size: 1.8em; color: #473c32;">📍 Lieu de formation</h3>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 20px; color: #473c32;">
+                <strong>APF France Handicap</strong><br>
+                17 Boulevard Auguste Blanqui<br>
+                75013 Paris
+            </p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.4!2d2.3527!3d48.8307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67191fc2b1585%3A0x9d3fce0eed0ea894!2s17%20Bd%20Auguste%20Blanqui%2C%2075013%20Paris!5e0!3m2!1sfr!2sfr!4v1748332800000"
+                        allowfullscreen="" 
+                        loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents -->
+    <section style="background: white;">
+        <div class="container">
+            <h2>Documents à télécharger</h2>
+            <div class="documents-grid">
+                <a href="programme.pdf" class="doc-button" download>
+                    <span class="icon">📋</span>
+                    <span class="doc-name">Programme détaillé</span>
+                    <span style="color: #94c11f;">⬇</span>
+                </a>
+
+                <a href="Livret participant.pdf" class="doc-button" download>
+                    <span class="icon">📄</span>
+                    <span class="doc-name">Livret stagiaire</span>
+                    <span style="color: #94c11f;">⬇</span>
+                </a>
+
+                <a href="Réglement de la certification.pdf" class="doc-button" download>
+                    <span class="icon">⚖️</span>
+                    <span class="doc-name">Règlement de la certification</span>
+                    <span style="color: #94c11f;">⬇</span>
+                </a>
+
+                <a href="Kit aide certif_v1.pdf" class="doc-button" download>
+                    <span class="icon">🎓</span>
+                    <span class="doc-name">Kit aide à la certification</span>
+                    <span style="color: #94c11f;">⬇</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-contact">
+                <h3 style="color: #94c11f; margin-bottom: 15px;">Contact</h3>
+                <p>
+                    📧 <a href="mailto:mickael.loeuille@valeurs-et-talents.fr">mickael.loeuille@valeurs-et-talents.fr</a><br>
+                    📞 <a href="tel:+33681255388">06 81 25 53 88</a><br>
+                    📍 3 ter avenue Des villages, 44470 Carquefou
+                </p>
+            </div>
+            
+            <div class="footer-links">
+                <p>
+                    <a href="https://www.valeurs-et-talents.fr/qui-sommes-nous/nos-engagements-sur-le-handicap/" target="_blank">
+                        ♿ Politique d'inclusion et gestion du handicap
+                    </a>
+                </p>
+            </div>
+
+            <p style="margin-top: 30px; opacity: 0.7; font-size: 0.9em;">
+                © 2026 Valeurs & Talents - Formation & Coaching - Conseil RH
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Accordéon
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Fermer tous les accordéons
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Ouvrir l'accordéon cliqué si il n'était pas déjà ouvert
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Ouvrir le premier accordéon par défaut
+        document.querySelector('.accordion-item').classList.add('active');
+    </script>
+</body>
+</html>
